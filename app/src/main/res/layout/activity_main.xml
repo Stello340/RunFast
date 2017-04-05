@@ -117,7 +117,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/mybutton"
         android:visibility="invisible"
-        android:onClick="save"
+        android:onClick="mostraConfermaSalvataggio"
         android:text="Salva"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/white"

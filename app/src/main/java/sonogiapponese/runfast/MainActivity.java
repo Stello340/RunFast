@@ -1,6 +1,7 @@
 package sonogiapponese.runfast;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,14 +25,12 @@ public class MainActivity extends AppCompatActivity {
     private Button save;
     private Date date = new Date();
     private Dialog dialog;
-
     private long lastPause;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         start = (ImageButton) findViewById(R.id.start);
         stop = (ImageButton) findViewById(R.id.stop);
         chrono = (Chronometer) findViewById(R.id.tempo);
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         elencoSessioni = (Button) findViewById(R.id.elenco_sessioni);
         reset = (Button) findViewById(R.id.azzera);
         save = (Button) findViewById(R.id.salva);
-
         lastPause = SystemClock.elapsedRealtime();
     }
 
@@ -67,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
         chrono.setBase(SystemClock.elapsedRealtime());
         lastPause = SystemClock.elapsedRealtime();
     }
-    public void save(View view) {
+
+    public void mostraConfermaSalvataggio(View view) {
         stop.setVisibility(View.INVISIBLE);
         start.setVisibility(View.VISIBLE);
         elencoSessioni.setVisibility(View.VISIBLE);
@@ -76,15 +75,19 @@ public class MainActivity extends AppCompatActivity {
         chrono.setBase(SystemClock.elapsedRealtime());
         lastPause = SystemClock.elapsedRealtime();
         dialog = new Dialog(this);
-        dialog.setContentView(R.layout.dialog_demo);
+        dialog.setContentView(R.layout.dialog_salva_sessione_corrente);
         dialog.setTitle(DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.ITALY).format(date));
         dialog.show();
     }
     public void saveOk(View view) {
+        /*
+        salva tempo e distanza della sessione corrente nell'internal storage
+         */
         dialog.dismiss();
     }
 
     public void elencoSessioni(View view) {
-
+        Intent openElencoSessioni = new Intent(MainActivity.this, ElencoSessioni.class);
+        startActivity(openElencoSessioni);
     }
 }

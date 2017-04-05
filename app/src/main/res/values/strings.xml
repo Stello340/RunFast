@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">RunFast</string>
     <string name="play_butt">PLAY</string>
+    <string name="elenco_sessioni_name">Elenco Sessioni</string>
+    <string name="conferma_name">conferma_name</string>
+    <string name="salva_sessione_corrente">salva_sessione_corrente</string>
 </resources>
