@@ -1,8 +1,11 @@
 package sonogiapponese.runfast;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -37,6 +40,15 @@ public class ElencoSessioni extends MainActivity {
         SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), aList, R.layout.element_session_list, from, to);
         ListView androidListView = (ListView) findViewById(R.id.listaSessioni);
         androidListView.setAdapter(simpleAdapter);
+
+        androidListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick (AdapterView < ? > adapter, View view,int position, long arg){
+                // TODO Auto-generated method stub
+                Intent openDettaglioSessione = new Intent(ElencoSessioni.this, DettaglioSessione.class);
+                startActivity(openDettaglioSessione);
+            }
+        });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

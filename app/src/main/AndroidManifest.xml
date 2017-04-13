@@ -19,10 +19,17 @@
         <activity android:name=".ElencoSessioni"
             android:label="@string/elenco_sessioni_name"
             android:parentActivityName=".MainActivity" >
-        <!-- Parent activity meta-data to support 4.0 and lower -->
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
+        </activity>
+
+        <activity android:name=".DettaglioSessione"
+            android:label="@string/dettaglio_sessione_name"
+            android:parentActivityName=".ElencoSessioni" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ElencoSessioni" />
         </activity>
     </application>
 </manifest>
